@@ -15,3 +15,5 @@ docker run -it --rm -v $(pwd)/var:/var/services -v $(pwd):/backup:ro yvess/alpin
         sh -c "cd /var && rm -Rf services/* && tar x -vJf /backup/exports/var_services.tar.xz"
 }
 ```
+
+Docker repo is on [yvess/alpine-xz](https://hub.docker.com/r/yvess/alpine-xz).
