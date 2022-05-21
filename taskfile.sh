@@ -10,7 +10,8 @@
 
 # Enable shell strict mode
 set -euo pipefail
-VERSION="1.0"
+
+IMAGE_VERSION="1.0"
 
 # BUILD IMAGES
 build-arch () {
@@ -18,15 +19,17 @@ build-arch () {
         --build-arg BUILDKIT_INLINE_CACHE=1 \
         --load \
         --platform linux/`arch|sed 's/x86_64/amd64/'` \
-        -t yves/alpine-xz:$VERSION .
+        -t yvess/alpine-xz:$IMAGE_VERSION \
+        -t yvess/alpine-xz:latest .
 }
 
 push-archs () {
     docker buildx build \
         --push \
         --build-arg BUILDKIT_INLINE_CACHE=1 \
-        --platform linux/arm64 \
-        -t yves/alpine-xz:$VERSION .
+        --platform linux/`arch|sed 's/x86_64/amd64/'` \
+        -t yvess/alpine-xz:$IMAGE_VERSION \
+        -t yvess/alpine-xz:latest .
 }
 
 
