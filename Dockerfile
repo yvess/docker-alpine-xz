@@ -1,3 +1,3 @@
 FROM alpine:3
 
-RUN apk add --no-cache xz
+RUN apk add --no-cache xz lz4
