@@ -27,7 +27,7 @@ push-archs () {
     docker buildx build \
         --push \
         --build-arg BUILDKIT_INLINE_CACHE=1 \
-        --platform linux/`arch|sed 's/x86_64/amd64/'` \
+        --platform linux/arm64,linux/amd64 \
         -t yvess/alpine-xz:$IMAGE_VERSION \
         -t yvess/alpine-xz:latest .
 }
